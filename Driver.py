@@ -4,7 +4,8 @@ import random
 
 # Functions
 
-def checkwinner(usertrans, computer):
+# Checks user input against random computer choice
+def checkwinner(usertrans, computer): 
     if usertrans == 0 and computer == 0:
         print('Tie!')
     elif usertrans == 0 and computer == 1:
@@ -40,6 +41,8 @@ computer = random.randint(0, 2)
  # 1 = Scissors
  # 2 = Paper
 
+    
+# Transfers string variable into int to compare to computer variable
 if userinput == 'R' or userinput == 'r':
     usertrans += 0
 elif userinput == 'S' or userinput == 's':
