@@ -17,10 +17,14 @@
 
 import random
 import string
+import os
 
 # Returns random word from text file
 def getword():
-    return random.choice(open("words.txt").readline().split())
+    abs_dir = os.path.dirname(__file__)
+    rel_path = "words.txt"
+    abs_file_path = os.path.join(abs_dir, rel_path)
+    return random.choice(open(abs_file_path).readline().split())
 
 
 # Introduction
@@ -34,7 +38,7 @@ print('You have 5 body parts to spare')
 while True:
     try:
         userguess = str(input('Enter your guess!'))
-        if userguess == len(1) and userguess == string.ascii_letters():
+        if len(userguess) is 1 and userguess.isalpha():
             break
         else:
             print('Error! Your input must be a letter, and only 1 digit in length')
