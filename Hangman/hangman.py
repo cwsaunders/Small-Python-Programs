@@ -1,5 +1,19 @@
 #!/usr/bin/env python3
 
+# NOTE: HANGMAN GAME NOT COMPLETE
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
 
 import random
 import string
