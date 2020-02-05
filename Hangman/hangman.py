@@ -24,7 +24,8 @@ def getword():
     abs_dir = os.path.dirname(__file__)
     rel_path = "words.txt"
     abs_file_path = os.path.join(abs_dir, rel_path)
-    return random.choice(open(abs_file_path).readline().split())
+    lines = open(abs_file_path).read().splitlines()
+    return random.choice(lines)
 
 
 # Introduction
@@ -37,8 +38,9 @@ word = getword()
 wordlist = list(word)
 
 # List to show player unguessed and guessed letters
-for x in range(wordlist):
-    hiddenlist[x] = '*'
+hiddenlist = []
+for x in range(len(wordlist)):
+    hiddenlist.append('*')
 
 # Initial game information
 print(f'Your word is {len(word)} characters long')
@@ -66,13 +68,13 @@ while not finished:
     # Edits user-shown list when letter guessed
     # Shortenes list of letters to guess when correct letter guessed
     # Increases counter if a 'life' is lost
-    for x in range(wordlist):
+    for x in range(len(wordlist)):
         if userguess is wordlist[x]:
             hiddenlist[x] = userguess
-            worldlist.remove(f'{userguess}')
+            wordlist.remove(f'{userguess}')
             print(f'Your guess ({userguess}), was correct!')
             break
-        elif userguess not any(wordlist):
+        elif userguess is not any(wordlist):
             counter += 1
             print(f'Your letter was not in the word! You have {5-counter} attempts left')
             break
@@ -86,4 +88,4 @@ while not finished:
     if counter > 5:
         print('Game over! You lose')
     elif len(wordlist) is 0:
-        print('You win! Congratulations!') 
+        print('You win! Congratulations!')
