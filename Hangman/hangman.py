@@ -36,6 +36,7 @@ word = getword()
 
 # This below list is to iterate through with guesses
 wordlist = list(word)
+wordlist2 = list(word)
 
 # List to show player unguessed and guessed letters
 hiddenlist = []
@@ -70,8 +71,16 @@ while not finished:
     # Increases counter if a 'life' is lost
     for x in range(len(wordlist)):
         if userguess is wordlist[x]:
-            hiddenlist[x] = userguess
+            # Issue: Same letter does not fill in twice 
+            hiddenlist[wordlist2.index(userguess)] = userguess
             wordlist.remove(f'{userguess}')
+            moreletters=True
+            while moreletters:
+                for x in range(len(wordlist)):
+                    # Trying to check if a letter occurs more
+                    # than once and if it does then fill it in
+                    # every spot
+                    # ******* NOT DONE YET
             print(f'Your guess ({userguess}), was correct!')
             break
         elif userguess is not any(wordlist):
